@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title></title>
+</head>
+<body>
+	<form method="POST" action="correo.php">
+		<label>Nombre</label>
+			<input type="text" name="nombre">
+			<br>
+		<label>Correo</label>
+			<input type="text" name="correo">
+			<br>
+		<select name="tipo">
+			<option>cotizacion</option>
+			<option>duda</option>
+			<option>otro</option>
+		</select>
+		<br>
+		<label>Mensaje</label>
+			<textarea rows="4" cols="50" name="mensaje">
+				
+			</textarea>
+			<br>
+		<input type="submit">
+	</form>
+	<script src="sweetalert2.all.min.js"></script>
+	<script>
+		function getParameterByName(name, url) {
+		    if (!url) url = window.location.href;
+		    name = name.replace(/[\[\]]/g, "\\$&");
+		    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+		        results = regex.exec(url);
+		    if (!results) return null;
+		    if (!results[2]) return '';
+		    return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+		var estado = getParameterByName('estado'); // "lorem
+		if (estado == null) {
+
+		}
+		else
+		{
+			swal({
+				  title: estado,
+				  type: 'success',
+				  text: 'Hemos recibido tu mensaje',
+				  showCloseButton: true,
+				  focusConfirm: true,
+				  confirmButtonText:
+				    '<i class="fa fa-thumbs-up"></i> Genial!',
+				  confirmButtonAriaLabel: 'Thumbs up, great!',
+				})
+		}
+	</script>
+</body>
+</html>
